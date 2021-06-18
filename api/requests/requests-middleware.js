@@ -9,7 +9,7 @@ const validateOwnership = async (req, res, next) => {
   if (equipment.owner.id === user_id) {
     next();
   } else {
-    res.status(401).json("you must own this equipment");
+    res.status(401).json("Are you the owner?");
   }
 };
 

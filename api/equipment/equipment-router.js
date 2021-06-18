@@ -59,9 +59,9 @@ router.put(
         const updated = await Equipment.updateById(equipment_id, equipment);
         res.status(200).json(updated);
       } else if (!existing) {
-        res.status(404).json(`equipment with id ${equipment_id} doesn't exist`);
+        res.status(404).json(`Id${equipment_id} not found`);
       } else {
-        res.status(401).json("user must own the equipment");
+        res.status(401).json("Do you own the equipment?");
       }
     } catch (err) {
       next(err);
@@ -82,9 +82,9 @@ router.delete(
         equipment = await Equipment.deleteById(equipment_id);
         res.status(200).json(equipment);
       } else if (!equipment) {
-        res.status(404).json(`equipment with id ${equipment_id} doesn't exist`);
+        res.status(404).json(`Id ${equipment_id} not found`);
       } else {
-        res.status(401).json("user must own the equipment");
+        res.status(401).json("Do you ownt the equipment?");
       }
     } catch (err) {
       next(err);

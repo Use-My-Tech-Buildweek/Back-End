@@ -36,7 +36,11 @@ router.post("/login", checkUsernameExists, (req, res) => {
           const token = buildToken(user);
           res
             .status(200)
-            .json({ message: `${username} is back!`, token, role: user.role });
+            .json({
+              message: `Welcome back ${username}!`,
+              token,
+              role: user.role,
+            });
         } else {
           res.status(401).json({ message: "Invalid credentials" });
         }
@@ -46,8 +50,7 @@ router.post("/login", checkUsernameExists, (req, res) => {
       });
   } else {
     res.status(400).json({
-      message:
-        "please provide username and password and the password shoud be alphanumeric",
+      message: "Username and Password are required",
     });
   }
 });
@@ -56,11 +59,9 @@ router.delete("/logout", (req, res) => {
   if (req.session) {
     req.session.destroy((err) => {
       if (err) {
-        res
-          .status(400)
-          .send("queue the groundhog day trope... you can never leave...");
+        res.status(400).send("Something went wrong");
       } else {
-        res.status(200).send("you made it out! good job!");
+        res.status(200).send("Thanks for using the app!");
       }
     });
   } else {

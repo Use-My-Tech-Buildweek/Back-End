@@ -27,7 +27,7 @@ router.post("/", restricted, checkRoleRenter, async (req, res, next) => {
     const request = { user_id: user_id, equipment_id: equipment_id };
     const added = await Requests.add(request);
     if (!added) {
-      res.status(401).json("you've already requested this equipment");
+      res.status(401).json("You have already sent a request for this item");
     } else {
       res.status(201).json(added);
     }
@@ -50,7 +50,7 @@ router.put(
         const updated = await Requests.accept(request_id);
         res.status(200).json(updated);
       } else {
-        res.status(401).json("this item is currently in use");
+        res.status(401).json("This item is not available at the moment");
       }
     } catch (err) {
       next(err);
