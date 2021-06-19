@@ -21,25 +21,25 @@ server.use("/api/users", usersRouter);
 server.use("/api/equipment", equipmentRouter);
 server.use("/api/requests", requestsRouter);
 
-const sessionOptions = {
-  name: "monkey",
-  secret: "keep it secret, keep it safe!",
-  cookie: {
-    maxAge: 1000 * 60 * 60,
-    secure: false,
-    httpOnly: false,
-  },
-  resave: false,
-  saveUninitialized: false,
-  store: new KnexSessionStore({
-    knex: require("../data/db-config"),
-    tablename: "sessions",
-    sidfieldname: "sid",
-    createtable: true,
-    clearInterval: 1000 * 60 * 60,
-  }),
-};
-server.use(session(sessionOptions));
+// const sessionOptions = {
+//   name: "monkey",
+//   secret: "keep it secret, keep it safe!",
+//   cookie: {
+//     maxAge: 1000 * 60 * 60,
+//     secure: false,
+//     httpOnly: false,
+//   },
+//   resave: false,
+//   saveUninitialized: false,
+//   store: new KnexSessionStore({
+//     knex: require("../data/db-config"),
+//     tablename: "sessions",
+//     sidfieldname: "sid",
+//     createtable: true,
+//     clearInterval: 1000 * 60 * 60,
+//   }),
+// };
+// server.use(session(sessionOptions));
 
 server.use((err, req, res, next) => {
   res.status(err.status || 500).json({
