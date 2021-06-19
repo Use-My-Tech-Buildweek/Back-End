@@ -48,7 +48,7 @@ router.get("/users", restricted, (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: "failed to get users" });
+      res.status(500).json({ message: "User not found" });
     });
 });
 
@@ -89,7 +89,7 @@ router.get("/user/:id", restricted, (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: "failed to get user" });
+      res.status(500).json({ message: "User not found" });
     });
 });
 
@@ -99,7 +99,7 @@ router.delete("/user/:id", restricted, (req, res) => {
       res.status(200).json({ message: `User ${req.body.username} deleted` });
     })
     .catch((error) => {
-      res.status(500).json({ message: "Couldn't delete the user" });
+      res.status(500).json({ message: "User not deleted" });
     });
 });
 

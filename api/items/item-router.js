@@ -31,7 +31,7 @@ router.post("/item", restricted, (req, res) => {
     })
     .catch((error) => {
       console.log(error);
-      res.status(500).json({ message: "Could not create item" });
+      res.status(500).json({ message: "Item not created" });
     });
 });
 
@@ -41,7 +41,7 @@ router.put("/item/:id", restricted, (req, res) => {
       res.json(item);
     })
     .catch((error) => {
-      res.status(500).json({ message: "Could not update items." });
+      res.status(500).json({ message: "Item not changed." });
     });
 });
 
@@ -53,7 +53,7 @@ router.delete("/item/:id", restricted, (req, res) => {
         .json({ message: `Item with ID ${req.params.id} deleted` });
     })
     .catch((error) => {
-      res.status(500).json({ message: "Couldn't delete the item" });
+      res.status(500).json({ message: "Item not deleted" });
     });
 });
 

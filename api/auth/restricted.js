@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     jwt.verify(token, jwtSecret, (err, decodedToken) => {
       if (err) {
         // the token is not valid
-        res.status(401).json({ you: "can't touch this!" });
+        res.status(401).json({ you: "Invalid token" });
       } else {
         req.user = { house: decodedToken.house };
 
@@ -17,6 +17,6 @@ module.exports = (req, res, next) => {
       }
     });
   } else {
-    res.status(401).json({ you: "shall not pass!" });
+    res.status(401).json({ you: "Invalid token" });
   }
 };
