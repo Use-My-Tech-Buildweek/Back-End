@@ -3,6 +3,7 @@ exports.up = function (knex) {
     item.increments();
     item.string("item_name", 18).notNullable();
     item.string("description", 256).notNullable();
+    item.timestamps(true, true);
     item
       .integer("user_id")
       .unsigned()

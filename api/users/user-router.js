@@ -41,6 +41,22 @@ router.post("/login", (req, res) => {
     });
 });
 
+router.delete("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        res
+          .status(400)
+          .json({ message: "Something went wrong!" });
+      } else {
+        res.status(200).json({ message: "Logout successful!" });
+      }
+    });
+  } else {
+    res.end();
+  }
+});
+
 router.get("/users", restricted, (req, res) => {
   Users.find()
     .then((users) => {
