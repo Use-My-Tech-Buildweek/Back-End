@@ -1,7 +1,12 @@
 # Back-End
 
 Endpoints => {  
+  
 ## user  
+<pre>user = { username: "money",
+         password: "123",
+         department: "owner",
+        }</pre>
 https://ptpt-use-my-tech5.herokuapp.com/api/user/:id => {
 **GET**
 Gets user by id
@@ -25,7 +30,17 @@ requires
 {"username": ,
 "password"}
 }  
+  
 ## items  
+<pre>item = {id: 1,  
+        item_name: "Moomba",  
+        description: "Does the nothing",  
+        user_id: 2,  
+        availability: 1,  
+        daily_rate: 20,  
+        condition: "Great",  
+        location: "LA",  
+        }</pre>
 https://ptpt-use-my-tech5.herokuapp.com/api/items => {
 **GET**
 Gets all items
