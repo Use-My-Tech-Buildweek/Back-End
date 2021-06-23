@@ -2,7 +2,7 @@
 
 Endpoints => {  
   
-## user  
+## Users  
 <pre>user = { username: "money",
          password: "123",
          department: "owner",
@@ -31,7 +31,7 @@ requires
 "password"}
 }  
   
-## items  
+## Items  
 <pre>item = {id: 1,  
         item_name: "Moomba",  
         description: "Does the nothing",  
