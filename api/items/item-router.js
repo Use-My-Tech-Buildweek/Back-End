@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Users = require("../items/item-model.js");
 const restricted = require("../auth/restricted");
 
-router.get("/items", restricted, (req, res) => {
+router.get("/items", (req, res) => {
   Users.allItems()
     .then((item) => {
       res.status(200).json(item);
@@ -13,7 +13,7 @@ router.get("/items", restricted, (req, res) => {
     });
 });
 
-router.get("/item/:id", restricted, (req, res) => {
+router.get("/item/:id", (req, res) => {
   Users.findItemById(req.params.id)
     .then((item) => {
       res.json(item);
