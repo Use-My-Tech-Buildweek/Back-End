@@ -7,6 +7,7 @@ exports.up = function (knex) {
     users.string("bio", 512);
     users.string("profile_pic", 2048);
     users.string("location", 18);
+    users.integer("rented_item_id");
   });
 };
 
