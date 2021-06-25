@@ -8,7 +8,17 @@ exports.up = function (knex) {
     users.string("profile_pic", 2048);
     users.string("location", 18);
     users.integer("rented_item_id");
-  });
+  })
+  .createTable("reviews", (reviews) => {
+    reviews.increments("review_id");
+    reviews.integer("id")
+    .unsigned()
+    .references("id")
+    .inTable("users")
+    .onDelete("CASCADE")
+    .onUpdate("CASCADE");
+    reviews.string("review", 2048);
+  })
 };
 
 exports.down = function (knex) {
