@@ -5,18 +5,16 @@ const { jwtSecret } = require("../users/secret");
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
 
-  if (token) {
-    jwt.verify(token, jwtSecret, (err, decodedToken) => {
+  if (!token) {
+    res.status(401).json("Token required");
+  } else {
+    jwt.verify(token, jwtSecret, (err, decoded) => {
       if (err) {
-        // the token is not valid
-        res.status(401).json({ you: "Invalid token" });
+        res.status(401).json("Token is invalid" + err.message);
       } else {
-        req.user = { house: decodedToken.house };
-
+        req.decodedToken = decoded;
         next();
       }
     });
-  } else {
-    res.status(401).json({ you: "Invalid token" });
   }
 };
